@@ -1,25 +1,28 @@
 #include<iostream>
 using namespace std;
-//description: A prime num is a whole num that can only be divided by 1 and itself
 void prime(int range){
-    int flag;
-    for(int i=2;i<=range;i++){//we use 2 loops to check num%allnums==0 only 2 times then the condition
-        for(int j=1;j<=i;j++){//prime num can only be divided by 1 and itself is true.
-            if(i%j==0){
-                flag++;
+    int i,j;
+    for(i=2;i<=range;i++)//range from 2
+    {
+        int tally=2; //initialising tally as 2 counts if given num is not prime.
+        for(j=2;j<=i/2;j++)//we are only checking if a number is divisible with it's possible factors. hence i/2.
+        {
+            if(i%j==0){//if tally increases above 2 its not a prime number.
+                    tally++;
             }
         }
-            if(flag==2){
-                cout<<i<<endl;
-            }
-            flag=0;
+        if(tally==2){
+            cout<<i<<endl;
+        }
     }
 }
-int main(){
+
+int main()
+{
     int a;
-    cout<<"enter range from 0 to ";
+    cout<<"prime nums ranging from 0 to ";
     cin>>a;
+    cout<<a<<":\n";
     prime(a);
-    cout<<"all prime numbers from 0 to "<<a<<".";
     return 0;
 }
